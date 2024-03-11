@@ -18,7 +18,7 @@ client.on("message", (topic, message) => {
   console.log(`${topic}: ${message.toString()}`);
   const COMMAND = (message) => `sudo ~/bto_ir_cmd/bto_ir_cmd -e -t  \`cat ~/bto_ir_cmd/codes/${message.data}\``
   exec(
-    COMMAND(topic),
+    COMMAND(message),
      (err, stdout, stderr) => {
        if (err) {
          console.log(`stderr: ${stderr}`);
