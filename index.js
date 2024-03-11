@@ -16,9 +16,10 @@ client.on("connect", () => {
 
 client.on("message", (topic, message) => {
   console.log(`${topic}: ${message.toString()}`);
-  const COMMAND = (message) => `sudo ~/bto_ir_cmd/bto_ir_cmd -e -t  \`cat ~/bto_ir_cmd/codes/${message.data}\``
+  const data = JSON.parse(message).data
+  const COMMAND = (data) => `sudo ~/bto_ir_cmd/bto_ir_cmd -e -t  \`cat ~/bto_ir_cmd/codes/${data}\``
   exec(
-    COMMAND(message),
+    COMMAND(data),
      (err, stdout, stderr) => {
        if (err) {
          console.log(`stderr: ${stderr}`);
