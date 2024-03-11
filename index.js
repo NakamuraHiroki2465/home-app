@@ -11,9 +11,7 @@ const client = connect("mqtt://mqtt.beebotte.com", {
 });
 
 client.on("connect", () => {
-  client.subscribe("home/air_hot");
-  client.subscribe("home/air_cool");
-  client.subscribe("home/air_off");
+  client.subscribe("home/assistant");
 });
 
 client.on("message", (topic, message) => {
